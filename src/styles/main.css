@@ -1,0 +1,278 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --color-cyan: #00f0ff;
+  --color-blue: #0066ff;
+  --color-purple: #a855f7;
+  --color-violet: #7928ca;
+  --color-emerald: #10b981;
+  --color-bg: #030712;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: text;
+}
+
+html, body {
+  background-color: var(--color-bg);
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom Futuristic Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #040814;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-cyan), var(--color-purple));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-cyan);
+}
+
+/* Fixed WebGL 3D Canvas */
+#webgl-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none; /* Allows scrolling and clicking DOM elements over 3D */
+}
+
+/* Futuristic Holographic Grid Layer */
+.cyber-grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vignette Darkening at edges for deep cinema focus */
+.cinema-vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, transparent 40%, rgba(3, 7, 18, 0.85) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(8, 15, 32, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(0, 240, 255, 0.04);
+  border-radius: 1.25rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-panel:hover {
+  border-color: rgba(0, 240, 255, 0.45);
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(0, 240, 255, 0.2),
+    inset 0 0 25px rgba(0, 240, 255, 0.08);
+}
+
+.glass-card {
+  background: rgba(10, 18, 40, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+/* Holographic Avatar Reticle Ring */
+.holographic-reticle {
+  position: relative;
+  display: inline-block;
+}
+
+.holographic-reticle::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2px dashed rgba(0, 240, 255, 0.6);
+  animation: spin 25s linear infinite;
+  pointer-events: none;
+}
+
+.holographic-reticle::after {
+  content: '';
+  position: absolute;
+  inset: -22px;
+  border-radius: 50%;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  border-top-color: var(--color-cyan);
+  border-bottom-color: var(--color-purple);
+  animation: spin-reverse 35s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Glowing Neon Text */
+.neon-text-cyan {
+  color: #00f0ff;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+
+.neon-text-purple {
+  color: #c084fc;
+  text-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+}
+
+.gradient-title {
+  background: linear-gradient(135deg, #ffffff 20%, #00f0ff 70%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cyber Badge */
+.cyber-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: #00f0ff;
+}
+
+/* Futuristic Scanline for Avatar & Cards */
+.scanline-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.8), transparent);
+  box-shadow: 0 0 12px var(--color-cyan);
+  animation: scanline 4s linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* HUD Navigation Waypoint Dots */
+.hud-waypoint-btn {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.hud-waypoint-btn:hover {
+  transform: scale(1.4);
+  background-color: var(--color-cyan);
+  box-shadow: 0 0 12px var(--color-cyan);
+}
+
+/* Section Heights & Responsive Spacing */
+.journey-section {
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+/* Glowing Button Styles */
+.cyber-btn-primary {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.2) 0%, rgba(0, 102, 255, 0.4) 100%);
+  border: 1px solid rgba(0, 240, 255, 0.5);
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 0.85rem 1.8rem;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+}
+
+.cyber-btn-primary:hover {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.35) 0%, rgba(0, 102, 255, 0.6) 100%);
+  border-color: #00f0ff;
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.cyber-btn-secondary {
+  position: relative;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #e2e8f0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  padding: 0.85rem 1.8rem;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cyber-btn-secondary:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(168, 85, 247, 0.15);
+  color: #ffffff;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
+  transform: translateY(-2px);
+}
