@@ -1,8 +1,7 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  root: './',
-  base: './',
+  base: '/dna-3d-portfolio1/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

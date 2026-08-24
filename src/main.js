@@ -458,3 +458,9 @@ class App {
 window.addEventListener('DOMContentLoaded', () => {
   new App();
 });
+
+const heroPhoto = document.getElementById("hero-photo");
+
+if (heroPhoto) {
+  heroPhoto.src = "/dna-3d-portfolio1/profile.jpg";
+}

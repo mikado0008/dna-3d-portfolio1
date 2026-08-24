@@ -17,7 +17,7 @@ export const portfolioData = {
     title: "BSc Chemistry Student | Learning Python | Vibe Coder & Web Developer",
     tagline: "Bridging Chemistry & Computing through Modern Web Development & Python",
     // [MY PHOTO] - Can be a local path or URL.
-    photoUrl: "/profile.jpg",
+    photoUrl: "/dna-3d-portfolio1/profile.jpg",
     introText: "I am a BSc Chemistry student exploring the world of technology. I am currently learning Python, building web projects through vibe coding, and continuously developing my skills in programming and modern web development.",
     ctaText: "Explore My Journey",
     statusBadge: "Learning, Building & Growing 🚀",
