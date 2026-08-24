@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ARPUTHARAJ B | 3D DNA Portfolio & Personal Profile (dna-3d-portfolio)</title>
+  <meta name="description" content="Explore the official 3D DNA Portfolio of Arputharaj B — BSc Chemistry student at Bishop Heber College, Python learner, vibe coder, and modern web developer. Interactive 3D WebGL experience." />
+  <meta name="keywords" content="dna-3d-portfolio, dna 3d portfolio, Arputharaj B, Arputharaj, Arputharaj portfolio, Bishop Heber College, BSc Chemistry, Python web developer, 3D DNA website, Three.js portfolio" />
+  <meta name="author" content="Arputharaj B" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://arputharaj-portfolio.vercel.app/" />
+
+  <!-- Open Graph / Facebook / LinkedIn Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://arputharaj-portfolio.vercel.app/" />
+  <meta property="og:title" content="ARPUTHARAJ B | 3D DNA Portfolio (dna-3d-portfolio)" />
+  <meta property="og:description" content="Explore the official 3D DNA Portfolio of Arputharaj B — BSc Chemistry student at Bishop Heber College, Python learner, vibe coder, and modern web developer." />
+  <meta property="og:image" content="./profile.jpg" />
+  <meta property="og:site_name" content="Arputharaj B 3D DNA Portfolio" />
+
+  <!-- Twitter Card Data -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ARPUTHARAJ B | 3D DNA Portfolio" />
+  <meta name="twitter:description" content="3D DNA Interactive Portfolio of Arputharaj B — Chemistry, Python & Web Development." />
+  <meta name="twitter:image" content="./profile.jpg" />
+
+  <!-- Google Structured Data (Schema.org JSON-LD for Google Rich Search Results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://arputharaj-portfolio.vercel.app/#person",
+        "name": "Arputharaj B",
+        "alternateName": ["Arputharaj", "dna-3d-portfolio"],
+        "url": "https://arputharaj-portfolio.vercel.app/",
+        "image": "https://arputharaj-portfolio.vercel.app/profile.jpg",
+        "jobTitle": "BSc Chemistry Student & Web Developer",
+        "worksFor": {
+          "@type": "EducationalOrganization",
+          "name": "Bishop Heber College (Autonomous)"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/arputharaj-b-5831783ba",
+          "https://github.com/Arputharaj-B"
+        ],
+        "knowsAbout": ["Python", "Web Development", "Chemistry", "Three.js", "Bioinformatics"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://arputharaj-portfolio.vercel.app/#website",
+        "url": "https://arputharaj-portfolio.vercel.app/",
+        "name": "dna-3d-portfolio - Arputharaj B",
+        "description": "3D DNA Double Helix Interactive Personal Portfolio of Arputharaj B",
+        "publisher": {
+          "@id": "https://arputharaj-portfolio.vercel.app/#person"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>" />
+  <script type="module" crossorigin src="./assets/index-CfPDBH3L.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CtESoy9R.css">
+</head>
+<body class="bg-cyber-bg text-slate-100 selection:bg-cyber-cyan selection:text-cyber-dark min-h-screen relative overflow-x-hidden">
+
+  <!-- Fixed 3D WebGL Canvas Layer -->
+  <div id="webgl-container" aria-hidden="true"></div>
+
+  <!-- Ambient Holographic Grid & Vignette -->
+  <div class="cyber-grid-overlay"></div>
+  <div class="cinema-vignette"></div>
+
+  <!-- ========================================================================= -->
+  <!-- TOP SCI-FI HUD BAR -->
+  <!-- ========================================================================= -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 py-3 bg-cyber-bg/60 backdrop-blur-md border-b border-cyber-cyan/15 flex items-center justify-between text-xs font-mono">
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyber-cyan animate-ping"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-cyber-cyan -ml-4.5"></span>
+        <span class="font-bold tracking-wider text-cyber-cyan text-sm sm:text-base font-display">BIO-HELIX://CORE</span>
+      </div>
+      <span class="hidden md:inline-block text-cyber-muted px-2 py-0.5 rounded bg-cyber-cyan/10 border border-cyber-cyan/20">
+        SYS.VER 3.7.0
+      </span>
+    </div>
+
+    <!-- Live DNA Nucleotide Sequence Stream -->
+    <div class="hidden lg:flex items-center gap-2 text-cyber-cyan/80">
+      <span class="text-slate-400">GENOME STREAM:</span>
+      <span id="hud-sequence-ticker" class="tracking-widest font-bold text-white bg-black/40 px-3 py-1 rounded border border-cyber-cyan/30">
+        ATGC-GTTA-CCGA-TTGA-AATC-GCCT-TAGC-AAGG
+      </span>
+    </div>
+
+    <!-- Right Controls: Telemetry & Audio Toggle -->
+    <div class="flex items-center gap-3">
+      <div id="hud-depth-readout" class="hidden sm:block text-slate-400 font-mono text-xs px-2.5 py-1 rounded bg-black/30 border border-white/10">
+        DEPTH: -0.0 nm
+      </div>
+
+      <button id="audio-toggle-btn" class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-white/15 text-cyber-muted hover:text-cyber-cyan hover:border-cyber-cyan transition-all text-xs">
+        <span id="audio-icon" class="text-sm">🔊</span>
+        <span id="audio-toggle-label">AUDIO OFF</span>
+      </button>
+    </div>
+
+    <!-- Progress Line at bottom of header -->
+    <div class="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-blue" id="hud-progress-bar" style="width: 0%;"></div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- RIGHT FLOATING WAYPOINT DOCK -->
+  <!-- ========================================================================= -->
+  <nav aria-label="Section Navigation" class="fixed right-4 sm:right-6 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col items-center gap-3 p-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
+    <button class="hud-waypoint-btn bg-cyber-cyan active" data-target="section-hero" title="01. Hero"></button>
+    <button class="hud-waypoint-btn bg-white/20" data-target="section-about" title="02. About Me"></button>
+    <button class="hud-waypoint-btn bg-white/20" data-target="section-studies" title="03. Current Studies"></button>
+    <button class="hud-waypoint-btn bg-white/20" data-target="section-skills" title="04. Skills"></button>
+    <button class="hud-waypoint-btn bg-white/20" data-target="section-projects" title="05. Projects"></button>
+    <button class="hud-waypoint-btn bg-white/20" data-target="section-certifications" title="06. Certifications"></button>
+    <button class="hud-waypoint-btn bg-white/20" data-target="section-vision" title="07. Future Vision"></button>
+    <button class="hud-waypoint-btn bg-white/20" data-target="section-contact" title="08. Contact"></button>
+  </nav>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN SCROLLABLE CONTENT SECTIONS -->
+  <!-- ========================================================================= -->
+  <main class="relative z-10 w-full">
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SECTION 1: HERO / INTRODUCTION -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="section-hero" class="journey-section min-h-screen flex items-center justify-center pt-24 px-4 sm:px-6">
+      <div class="max-w-4xl w-full mx-auto text-center flex flex-col items-center">
+        
+        <!-- Status Indicator -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyber-cyan/10 border border-cyber-cyan/30 text-cyber-cyan text-xs font-mono tracking-wider mb-6 animate-pulse">
+          <span class="w-2 h-2 rounded-full bg-cyber-cyan"></span>
+          <span id="hero-status">AVAILABLE FOR ROLES & RESEARCH</span>
+        </div>
+
+        <!-- Futuristic Holographic Circular Avatar Frame -->
+        <div class="relative my-4 mb-8">
+          <div class="holographic-reticle">
+            <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden border-2 border-cyber-cyan/60 shadow-glow-cyan scanline-box bg-slate-900/80 p-1">
+              <img 
+                id="hero-photo" 
+                src="./profile.jpg" 
+                alt="Arputharaj B"
+                class="w-full h-full object-cover object-[center_15%] rounded-full filter contrast-105 brightness-105"
+              />
+            </div>
+          </div>
+          <!-- Outer Holographic Coordinates -->
+          <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-black/80 px-3 py-0.5 rounded-full border border-cyber-cyan/40 text-[10px] font-mono text-cyber-cyan whitespace-nowrap">
+            LOC://BIO-CELL-01
+          </div>
+        </div>
+
+        <!-- My Name & Professional Title -->
+        <h1 id="hero-name" class="text-4xl sm:text-6xl md:text-7xl font-extrabold font-display tracking-tight text-white mb-4">
+          <span class="gradient-title">ARPUTHARAJ</span>
+        </h1>
+
+        <h2 id="hero-title" class="text-lg sm:text-2xl font-medium text-cyber-cyan font-mono tracking-wide mb-6 max-w-2xl">
+          MSc Bioinformatics Scholar & Aspiring AI / Data Scientist
+        </h2>
+
+        <!-- Short Professional Intro -->
+        <p id="hero-intro" class="text-slate-300 text-sm sm:text-base max-w-2xl leading-relaxed mb-10 font-sans">
+          Decoding biological complexity through artificial intelligence, genomic sequence modeling, and molecular simulations to engineer next-generation scientific breakthroughs.
+        </p>
+
+        <!-- CTA Button -->
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <button id="hero-cta-btn" class="cyber-btn-primary group flex items-center gap-3 text-sm sm:text-base">
+            <span>Explore My Journey</span>
+            <span class="inline-block transition-transform duration-300 group-hover:translate-y-1">↓</span>
+          </button>
+          <a href="#section-contact" class="cyber-btn-secondary text-sm sm:text-base flex items-center gap-2">
+            <span>Direct Inquiries</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <!-- Scroll Down Cue -->
+        <div class="mt-16 flex flex-col items-center gap-2 text-cyber-muted text-xs font-mono animate-bounce">
+          <span>SCROLL TO TRAVERSE HELIX</span>
+          <span>↓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SECTION 2: ABOUT ME -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="section-about" class="journey-section px-4 sm:px-8">
+      <div class="max-w-6xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Side Floating Glass Panel -->
+        <div class="lg:col-span-8 glass-panel p-6 sm:p-10 border border-cyber-cyan/30">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="cyber-badge">SECTION 02 // PROFILE</span>
+            <span class="text-xs font-mono text-slate-400">LOC: CHROMOSOME-A</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-bold font-display text-white mb-2">
+            Where Biology Meets <span class="text-cyber-cyan">Advanced Computation</span>
+          </h2>
+          <p class="text-cyber-muted font-mono text-sm mb-6">Bridging dry-lab machine learning architectures with wet-lab biological insights.</p>
+
+          <!-- Bio Paragraphs -->
+          <div id="about-paragraphs" class="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+            <p>I am an MSc Bioinformatics scholar dedicated to transforming high-throughput biological data into actionable discoveries. My journey is defined by a relentless drive to apply machine learning, structural bioinformatics, and statistical modeling to unravel complex genetic architectures.</p>
+            <p>With a strong foundation in both computational algorithms and biological principles, I build end-to-end data pipelines, predictive models for protein-ligand interactions, and scalable genomic workflows.</p>
+          </div>
+
+          <!-- Highlight Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 pt-6 border-t border-white/10" id="about-highlights-grid">
+            <div class="glass-card p-4">
+              <span class="text-xs text-cyber-cyan font-mono block mb-1">FOCUS AREAS</span>
+              <span class="text-sm font-semibold text-white">Genomics, Structural Biology, Deep Learning</span>
+            </div>
+            <div class="glass-card p-4">
+              <span class="text-xs text-cyber-purple font-mono block mb-1">METHODOLOGY</span>
+              <span class="text-sm font-semibold text-white">Scalable Pipelines, Molecular Dynamics</span>
+            </div>
+            <div class="glass-card p-4">
+              <span class="text-xs text-cyber-emerald font-mono block mb-1">CORE PASSION</span>
+              <span class="text-sm font-semibold text-white">AI-Driven Healthcare & Molecular Intelligence</span>
+            </div>
+            <div class="glass-card p-4">
+              <span class="text-xs text-cyber-blue font-mono block mb-1">WORK ETHIC</span>
+              <span class="text-sm font-semibold text-white">Data-Driven, Research-First, Global</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Stats Card -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="glass-panel p-6 border border-cyber-purple/30">
+            <h3 class="text-xs font-mono text-cyber-purple mb-4 tracking-wider uppercase">Telemetry & Metric Highlights</h3>
+            <div class="space-y-5" id="about-stats-container">
+              <div class="border-b border-white/10 pb-3">
+                <div class="text-3xl font-extrabold font-display text-cyber-cyan">99.4%</div>
+                <div class="text-xs text-slate-400 font-mono mt-1">Sequence Alignment Precision</div>
+              </div>
+              <div class="border-b border-white/10 pb-3">
+                <div class="text-3xl font-extrabold font-display text-cyber-purple">15+</div>
+                <div class="text-xs text-slate-400 font-mono mt-1">Genomic & ML Projects Built</div>
+              </div>
+              <div class="border-b border-white/10 pb-3">
+                <div class="text-3xl font-extrabold font-display text-cyber-emerald">500k+</div>
+                <div class="text-xs text-slate-400 font-mono mt-1">Base Pairs Computationally Analyzed</div>
+              </div>
+              <div>
+                <div class="text-3xl font-extrabold font-display text-white">100%</div>
+                <div class="text-xs text-slate-400 font-mono mt-1">Commitment to Scientific Rigor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SECTION 3: CURRENT STUDIES -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="section-studies" class="journey-section px-4 sm:px-8">
+      <div class="max-w-6xl w-full mx-auto">
+        <div class="text-left mb-10">
+          <span class="cyber-badge mb-3">SECTION 03 // ACADEMICS</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-display text-white">
+            Current <span class="text-cyber-cyan">Studies & Research</span>
+          </h2>
+          <p class="text-cyber-muted font-mono text-sm mt-2">Rigorous academic foundation in computational life sciences and machine learning</p>
+        </div>
+
+        <!-- Academic Degree Showcase Card -->
+        <div class="glass-panel p-6 sm:p-8 mb-8 border border-cyber-cyan/30 relative overflow-hidden">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+            <div class="md:col-span-2">
+              <span class="text-xs font-mono text-cyber-cyan px-2.5 py-1 rounded bg-cyber-cyan/10 border border-cyber-cyan/30 inline-block mb-3">
+                DEGREE CANDIDATE
+              </span>
+              <h3 id="studies-degree" class="text-2xl sm:text-3xl font-bold font-display text-white mb-2">
+                Master of Science in Bioinformatics
+              </h3>
+              <p id="studies-institution" class="text-base text-cyber-muted font-mono mb-3">
+                Premier Technological & Life Sciences University | 2024 — Present
+              </p>
+              <p id="studies-specialization" class="text-sm text-slate-300">
+                Specialization in Computational Genomics, High-Throughput Sequence Analysis, Structural Modeling & AI Drug Discovery.
+              </p>
+            </div>
+            <div class="glass-card p-4 text-center border-cyber-cyan/20">
+              <span class="text-xs font-mono text-cyber-cyan block mb-1">ACADEMIC STANDING</span>
+              <div class="text-2xl font-bold font-display text-white">First Class Distinction</div>
+              <span class="text-xs text-cyber-muted mt-1 block">Advanced Research Track</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 Core Study Module Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="studies-modules-grid">
+          <div class="glass-card p-6 border-l-4 border-l-cyber-cyan">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="p-2 rounded bg-cyber-cyan/10 text-cyber-cyan text-lg">🧬</span>
+              <h4 class="text-lg font-bold font-display text-white">Next-Generation Sequencing & Genomics</h4>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Variant calling pipelines, RNA-Seq differential expression analysis, GWAS, and single-cell transcriptomics using SAMtools, BCFtools, and DESeq2.
+            </p>
+          </div>
+
+          <div class="glass-card p-6 border-l-4 border-l-cyber-purple">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="p-2 rounded bg-cyber-purple/10 text-cyber-purple text-lg">⚛️</span>
+              <h4 class="text-lg font-bold font-display text-white">Structural Bioinformatics & Drug Design</h4>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Molecular docking (AutoDock Vina), molecular dynamics simulations (GROMACS), and homology modeling of protein-ligand complexes.
+            </p>
+          </div>
+
+          <div class="glass-card p-6 border-l-4 border-l-cyber-emerald">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="p-2 rounded bg-cyber-emerald/10 text-cyber-emerald text-lg">🧠</span>
+              <h4 class="text-lg font-bold font-display text-white">Machine Learning & AI in Biomedicine</h4>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Neural network architectures for biological sequence classification, transformer embeddings for proteins, and biomarker discovery.
+            </p>
+          </div>
+
+          <div class="glass-card p-6 border-l-4 border-l-cyber-blue">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="p-2 rounded bg-cyber-blue/10 text-cyber-blue text-lg">⚡</span>
+              <h4 class="text-lg font-bold font-display text-white">High-Performance Biological Computing</h4>
+            </div>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Parallelized data wrangling, BioPython, R/Bioconductor, Nextflow workflows, and scalable cloud pipelines on AWS and GCP.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SECTION 4: SKILLS & ENCODED CAPABILITIES -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="section-skills" class="journey-section px-4 sm:px-8">
+      <div class="max-w-6xl w-full mx-auto">
+        <div class="text-left mb-10">
+          <span class="cyber-badge mb-3">SECTION 04 // CAPABILITIES</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-display text-white">
+            Encoded <span class="text-cyber-cyan">Skills Matrix</span>
+          </h2>
+          <p class="text-cyber-muted font-mono text-sm mt-2">Abilities synthesized across computational biology, data science, and modern software engineering</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="skills-container">
+          <!-- Category 1: Technical & Computational Skills -->
+          <div class="glass-panel p-6 sm:p-8 border border-cyber-cyan/30">
+            <div class="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
+              <h3 class="text-xl font-bold font-display text-cyber-cyan flex items-center gap-2">
+                <span>💻</span> Technical & Computational
+              </h3>
+              <span class="text-xs font-mono text-slate-400">8 CORE DOMAINS</span>
+            </div>
+            <div class="space-y-4" id="skills-list-technical">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Category 2: Tools, Frameworks & Cloud -->
+          <div class="glass-panel p-6 sm:p-8 border border-cyber-purple/30">
+            <div class="flex items-center justify-between mb-6 pb-3 border-b border-white/10">
+              <h3 class="text-xl font-bold font-display text-cyber-purple flex items-center gap-2">
+                <span>🛠️</span> Tools, Frameworks & Cloud
+              </h3>
+              <span class="text-xs font-mono text-slate-400">8 BIO-FRAMEWORKS</span>
+            </div>
+            <div class="space-y-4" id="skills-list-tools">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SECTION 5: PROJECTS -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="section-projects" class="journey-section px-4 sm:px-8">
+      <div class="max-w-6xl w-full mx-auto">
+        <div class="text-left mb-10">
+          <span class="cyber-badge mb-3">SECTION 05 // INNOVATION</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-display text-white">
+            Featured <span class="text-cyber-cyan">Projects</span>
+          </h2>
+          <p class="text-cyber-muted font-mono text-sm mt-2">Holographic cards emerging from the double helix — AI models, genomic pipelines & molecular tools</p>
+        </div>
+
+        <!-- Projects 3D Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projects-grid">
+          <!-- Rendered dynamically from portfolioData.projects -->
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SECTION 6: CERTIFICATIONS & ACHIEVEMENTS -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="section-certifications" class="journey-section px-4 sm:px-8">
+      <div class="max-w-6xl w-full mx-auto">
+        <div class="text-left mb-10">
+          <span class="cyber-badge mb-3">SECTION 06 // CREDENTIALS</span>
+          <h2 class="text-3xl sm:text-5xl font-bold font-display text-white">
+            Certifications & <span class="text-cyber-cyan">Achievements</span>
+          </h2>
+          <p class="text-cyber-muted font-mono text-sm mt-2">Verified professional credentials, institutional honors, and hackathon victories</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Left: Certifications Cards -->
+          <div class="lg:col-span-7 space-y-4" id="certifications-list">
+            <!-- Rendered via JS -->
+          </div>
+
+          <!-- Right: Key Honors & Hackathons -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="glass-panel p-6 border border-cyber-emerald/30">
+              <h3 class="text-lg font-bold font-display text-cyber-emerald flex items-center gap-2 mb-4">
+                <span>🏆</span> Honors & Milestones
+              </h3>
+              <div class="space-y-4" id="achievements-list">
+                <!-- Rendered via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SECTION 7: FUTURE GOALS -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="section-vision" class="journey-section px-4 sm:px-8">
+      <div class="max-w-5xl w-full mx-auto text-center">
+        <span class="cyber-badge mb-3">SECTION 07 // HORIZON</span>
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold font-display text-white mb-4">
+          My <span class="gradient-title">Future Vision</span>
+        </h2>
+        <p class="text-cyber-cyan font-mono text-base max-w-2xl mx-auto mb-12">
+          "Building the future through the convergence of science, programming and modern web technology."
+        </p>
+
+        <!-- Vision 3 Pillars Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left" id="vision-pillars-grid">
+          <div class="glass-panel p-6 border-t-4 border-t-cyber-cyan">
+            <div class="text-3xl mb-4">✨</div>
+            <h3 class="text-xl font-bold font-display text-white mb-2">Full-Stack & Python Mastery</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Becoming a proficient software engineer capable of building robust web applications, automated tools, and scalable software solutions.
+            </p>
+          </div>
+
+          <div class="glass-panel p-6 border-t-4 border-t-cyber-purple">
+            <div class="text-3xl mb-4">⚛️</div>
+            <h3 class="text-xl font-bold font-display text-white mb-2">Chemistry & Tech Synergy</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Developing computational tools and 3D web visualizations that make scientific data intuitive, accessible, and interactive for researchers.
+            </p>
+          </div>
+
+          <div class="glass-panel p-6 border-t-4 border-t-cyber-emerald">
+            <div class="text-3xl mb-4">🌐</div>
+            <h3 class="text-xl font-bold font-display text-white mb-2">Continuous Learning & Global Impact</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Collaborating on open-source initiatives, building impactful tech products, and exploring worldwide opportunities in tech.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --------------------------------------------------------------------- -->
+    <!-- SECTION 8: CONTACT & CONNECT -->
+    <!-- --------------------------------------------------------------------- -->
+    <section id="section-contact" class="journey-section px-4 sm:px-8">
+      <div class="max-w-4xl w-full mx-auto">
+        <div class="glass-panel p-8 sm:p-12 border border-cyber-cyan/40 text-center relative">
+          
+          <span class="cyber-badge mb-4">SECTION 08 // CONNECT</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold font-display text-white mb-3">
+            Let's <span class="text-cyber-cyan">Connect</span>
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto mb-8 font-sans">
+            I am currently open for collaborations, learning opportunities, tech inquiries, and software development projects.
+          </p>
+
+          <!-- Email Copy Card -->
+          <div class="glass-card max-w-lg mx-auto p-4 flex items-center justify-between gap-3 mb-8 border-cyber-cyan/30">
+            <div class="flex items-center gap-3 overflow-hidden text-left">
+              <span class="text-xl text-cyber-cyan">✉️</span>
+              <span id="contact-email-text" class="font-mono text-xs sm:text-sm text-slate-200 truncate">arputharaj.bioinfo@gmail.com</span>
+            </div>
+            <button id="copy-email-btn" class="px-3.5 py-1.5 rounded-lg bg-cyber-cyan/20 hover:bg-cyber-cyan text-cyber-cyan hover:text-black font-mono text-xs transition-all font-semibold whitespace-nowrap">
+              Copy Email
+            </button>
+          </div>
+
+          <!-- Social Links Matrix -->
+          <div class="flex flex-wrap items-center justify-center gap-4 mb-10">
+            <a id="contact-linkedin-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="cyber-btn-secondary flex items-center gap-2 text-sm">
+              <span>💼 LinkedIn Profile</span>
+            </a>
+            <a id="contact-github-link" href="https://github.com" target="_blank" rel="noopener noreferrer" class="cyber-btn-secondary flex items-center gap-2 text-sm">
+              <span>🐙 GitHub Repositories</span>
+            </a>
+          </div>
+
+          <!-- Closing Statement & Footer -->
+          <div class="pt-8 border-t border-white/10 font-mono text-xs text-cyber-muted flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span id="contact-closing" class="text-slate-300 font-sans italic text-sm">
+              "Building the future through science, data and technology."
+            </span>
+            <span class="text-cyber-cyan">
+              © 2026 ARPUTHARAJ | 3D DNA CORE
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Project Modal View -->
+  <div id="project-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-panel max-w-2xl w-full p-6 sm:p-8 border-cyber-cyan/50 relative">
+      <button id="close-modal-btn" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">✕</button>
+      <div id="modal-content">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 pointer-events-none"></div>
+
+  <!-- Main JavaScript Entry -->
+</body>
+</html>
